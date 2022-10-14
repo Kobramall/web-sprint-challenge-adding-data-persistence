@@ -15,9 +15,8 @@ router.get('/', (req, res, next) =>{
         }else{
             newProjects.push({...element, project_completed: true})
         }
-        
+        res.json(projects)
     });
-    res.json(newProjects)
    })
    .catch(next)
 })
@@ -29,10 +28,7 @@ router.get('/:id', async (req, res) =>{
 router.post('/', async (req, res, next) =>{
     try{
         const newProject = await Projects.create(req.body)
-          let finalProject = {}
-        if(newProject.project_completed === 0){
-            finalProject = {...newProject, project_completed: false}
-        }else{  finalProject = {...newProject, project_completed: true}}
+        const finalProject = {...newProject, project_completed: true}
         res.status(201).json(finalProject)
     }catch(err){
         next(err)

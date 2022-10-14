@@ -21,7 +21,7 @@ router.get('/', (req, res, next) =>{
 })
 
 router.get('/:id', async (req, res) =>{
-    res.json(req.task);
+    res.json(req.task)
 })
 
 router.post('/', (req, res, next) =>{

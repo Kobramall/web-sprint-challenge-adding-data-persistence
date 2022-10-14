@@ -8,7 +8,7 @@ const getById = id =>{
 function find() {
     return db('tasks as t')
     .join('projects as p', 't.project_id', 'p.project_id')
-    .select('p.project_name', 'project_description', "task_completed", "task_description", "task_notes")
+    .select('p.project_name', 'project_description')
 }
 
 async function add(task){

@@ -15,9 +15,8 @@ router.get('/', (req, res, next) =>{
         }else{
             newProjects.push({...element, project_completed: true})
         }
-        
+        res.json(newProjects)
     });
-    res.json(newProjects)
    })
    .catch(next)
 })

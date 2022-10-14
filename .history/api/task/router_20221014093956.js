@@ -6,22 +6,13 @@ const router = express.Router()
 router.get('/', (req, res, next) =>{
     Task.find()
     .then(tasks => {
-        const newProjects = []
-    tasks.forEach(element => {
-        if(element.task_completed === 0){
-            newProjects.push({...element, task_completed: false})
-        }else{
-            newProjects.push({...element, task_completed: true})
-        }
-        
-    });
-    res.json(newProjects)
+        res.json(tasks)
     })
-    .catch(next);
+    .catch(next)
 })
 
 router.get('/:id', async (req, res) =>{
-    res.json(req.task);
+    res.json(req.task)
 })
 
 router.post('/', (req, res, next) =>{

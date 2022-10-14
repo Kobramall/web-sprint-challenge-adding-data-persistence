@@ -8,16 +8,14 @@ const router = express.Router()
 router.get('/', (req, res, next) =>{
   Projects.find()
    .then(projects =>{ 
-     const newProjects = []
     projects.forEach(element => {
         if(element.project_completed === 0){
-            newProjects.push({...element, project_completed: false})
+            element.project_completed = false
         }else{
-            newProjects.push({...element, project_completed: true})
+            element.project_completed = true 
         }
-        
+        res.json(projects)
     });
-    res.json(newProjects)
    })
    .catch(next)
 })

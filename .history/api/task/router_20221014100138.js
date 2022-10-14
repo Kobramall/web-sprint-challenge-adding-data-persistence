@@ -8,20 +8,20 @@ router.get('/', (req, res, next) =>{
     .then(tasks => {
         const newProjects = []
     tasks.forEach(element => {
-        if(element.task_completed === 0){
-            newProjects.push({...element, task_completed: false})
+        if(element.project_completed === 0){
+            newProjects.push({...element, project_completed: false})
         }else{
-            newProjects.push({...element, task_completed: true})
+            newProjects.push({...element, project_completed: true})
         }
         
     });
     res.json(newProjects)
     })
-    .catch(next);
+    .catch(next)
 })
 
 router.get('/:id', async (req, res) =>{
-    res.json(req.task);
+    res.json(req.task)
 })
 
 router.post('/', (req, res, next) =>{
